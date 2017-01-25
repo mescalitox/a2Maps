@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title: string = 'My first angular2-google-maps project';
+  lat: number = 51.678418;
+  lng: number = 7.809007;
+
+  ngOnInit(){
+    navigator.geolocation.getCurrentPosition(position => {
+      this.lat = position.coords.latitude; 
+      this.lng = position.coords.longitude;
+    });
+  }
+  
 }
